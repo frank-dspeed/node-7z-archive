@@ -93,8 +93,8 @@ export function Run(
         // Parse the command variable. If the command is not a string reject the
         // Promise. Otherwise transform the command into two variables: the command
         // name and the arguments.
-        if (typeof command !== 'string' || !isString(binary)) {
-            return reject(new Error('Command and Binary must be a string'));
+        if (!isString(command) || !isString(binary)) {
+            return reject(new TypeError('The binary command and arrguments need to be type :string but\n binary is: ${typeof binary }\n command is: ${typeof command}`));
         }
 
         // add platform binary to command
